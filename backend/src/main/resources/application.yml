@@ -1,0 +1,41 @@
+server:
+  port: 8064
+  servlet:
+    context-path: /portalShow
+
+spring:
+  application:
+    name: portal-show-backend
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+# MyBatis Plus Config
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Sa-Token Config
+sa-token:
+  # Token Name (frontend will use this key)
+  token-name: Authorization
+  # Token timeout (seconds) - 30 days
+  timeout: 2592000
+  # Activity timeout - -1 means no timeout
+  activity-timeout: -1
+  # Is allowed concurrent login
+  is-concurrent: true
+  # Is share token
+  is-share: true
+  # Token style: jwt
+  token-style: jwt-simple
+  # JWT secret key (at least 32 chars)
+  jwt-secret-key: portalShowBackendSecretKeyDoNotLeak123456
+  # Read token from header
+  is-read-header: true
+  is-read-cookie: false
+
